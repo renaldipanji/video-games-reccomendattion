@@ -91,7 +91,7 @@ Visualisasi tersebut menunjukkan tren yang menarik dalam industri game, di mana 
 Sebelum menciptakan model sistem rekomendasi, ada beberapa tahapan yang perlu dilakukan. Tahapan-tahapan tersebut adalah sebagai berikut:
 
 1. `Pembuatan Fitur User_ID`: Data awal tidak memiliki fitur user_id, sehingga setiap baris dianggap sebagai user_id dan diindekskan sebagai user_id.
-2. `Pemilihan Fit`: Karena i adalah proyek sistem rekomendasi, dilakukan pemilihan fitur yang relevan, termasuk User_ID, Game Title, Platform, Year, Genre, Publisher, dan Review.
+2. `Pemilihan Fitur`: Karena i adalah proyek sistem rekomendasi, dilakukan pemilihan fitur yang relevan, termasuk User_ID, Game Title, Platform, Year, Genre, Publisher, dan Review.
 3. `Format UlanFitur`: Kom Review diubah menjadi bilangan bulat dengan melakukan pembulatan nilai.
 4. `Pembuatan Fitur Game_ID`: Data Game Title yang unik diasumsikan sebagai game_id dan diberi label.
 5. `Penghapusan Duplikasi Data`: Data duplikasi dihapus berdasarkan fitur Game_ID untuk memastikan keakuratan hasil.
@@ -99,6 +99,14 @@ Sebelum menciptakan model sistem rekomendasi, ada beberapa tahapan yang perlu di
 7. `Pembuatan DataFrame`: DataFrame yang baru berisi fitur-fitur yang terpilih untuk proses pembuatan model.
 8. `Penggunaan TF-IDF Vectorizer`: Menghitung bobot kata dalam konteks data yang ada.
 9. `Penghitungan Cosine Similarity`: Menghitung nilai kemiripan antara data satu dengan yang lain untuk mendapatkan hasil rekomendasi yang akurat.
+10. `Train-test split` : proses membagi data menjadi data latih (train data) dan data uji (test data). Data latih digunakan untuk melatih model, sementara data uji digunakan untuk menguji kinerja model yang telah dilatih.
+
+    Pada proyek ini, setelah melewati proses pembersihan data. jumlah data yang siap digunakan sebanyak 1505 data akan dibagi menjadi 1204 untuk data latih dan 301 untuk data uji. Dalam hal ini, sekitar 80% dari data akan digunakan sebagai data latih, sedangkan sekitar 20% akan digunakan sebagai data uji. Pembagian ini dapat dilakukan dengan menggunakan teknik random sampling untuk memastikan representativitas data dalam kedua subset.
+
+    Data latih akan digunakan untuk melatih model _machine learning_ dan menyesuaikan parameter model. Setelah model dilatih, data uji akan digunakan untuk menguji performa dan mengukur akurasi model yang dihasilkan.
+
+    Dengan membagi data menjadi data latih dan data uji, ini memungkinkan evaluasi yang obyektif terhadap kinerja model di luar data yang digunakan untuk melatihnya, sehingga memberikan perkiraan yang lebih baik tentang bagaimana model tersebut akan berperforma pada data baru yang belum pernah dilihat sebelumnya.
+
 
 ## **Modeling dan Results**
 
@@ -180,7 +188,7 @@ $$ \text{recommender system precision : } P = \frac{ \text{of our recommendation
 
 $$Persamaan\ 2.1\ Rumus Precision$$
 
-Berdasarkan Persamaan 2.1 yang merupakan rumus dari precision, kita dapat menghitung nilai precision berdasarkan model yang telah diuji coba. Dalam kasus ini, nilai precision nya adalah 100% karena dari 5 rekomendasi yang diberikan oleh model, semuanya memiliki genre yang relevan yaitu "Platform", sesuai dengan genre game yang pernah dimainkan sebelumnya oleh pemain. Artinya, semua rekomendasi yang diberikan oleh model merupakan rekomendasi yang relevan dan sesuai dengan preferensi pemain.
+Berdasarkan Persamaan 2.1 yang merupakan rumus dari precision, kita dapat menghitung nilai precision berdasarkan model yang telah diuji coba. Dalam kasus ini, nilai precision nya adalah 100% karena dari 5 rekomendasi yang diberikan oleh model, maka cara menghitung nilai precision berdasarkan model yang telah diuji cobakan adalah P = 5/5 atau nilai precision nya adalah 100%. Nilai 5 didapatkan dari genre yang muncul pada rekomendasi semuanya adalah "Platform", sesuai dengan genre game yang pernah dimainkan sebelumnya oleh pemain. Artinya, semua rekomendasi yang diberikan oleh model merupakan rekomendasi yang relevan dan sesuai dengan preferensi pemain.
 
 ### **_B. Collaborative Filtering_**
 
